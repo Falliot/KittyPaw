@@ -25,7 +25,7 @@ class ListViewController: UIViewController {
     
     getKitties()
     configureDelegates()
-    alterLayout()
+
     // Do any additional setup after loading the view.
   }
   
@@ -33,12 +33,6 @@ class ListViewController: UIViewController {
     searchBar.delegate = self
     tableView.delegate = self
     tableView.dataSource = self
-  }
-  
-  func alterLayout() {
-    navigationController?.hidesBarsOnSwipe = false
-    searchBar.showsScopeBar = false // you can show/hide this dependant on your layout
-    searchBar.placeholder = "Search Kitty by Origin"
   }
   
   
@@ -71,6 +65,22 @@ class ListViewController: UIViewController {
       }
     }.resume()
   }
+  
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "toDetails" {
+      if let indexPath = tableView.indexPathForSelectedRow {
+        
+        let kitty: KittyData
+  
+        kitty = kittyArray[indexPath.row]
+        
+        let destinationVC = segue.destination as! DetailsViewController
+          destinationVC.kittyDetails = kitty
+      }
+    }
+  }
+  
   
   
 }
