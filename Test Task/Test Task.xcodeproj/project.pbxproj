@@ -70,11 +70,11 @@
 				3A7DF12024617ADF00148687 /* ListViewController.swift */,
 				3A7DF12624627A5000148687 /* DetailsViewController.swift */,
 				3A7DF11E24617A5700148687 /* KittyTableViewCell.swift */,
+				3A7DF12424617C4400148687 /* KittyData.swift */,
 				3A7DF1102461769700148687 /* Main.storyboard */,
 				3A7DF1132461769900148687 /* Assets.xcassets */,
 				3A7DF1152461769900148687 /* LaunchScreen.storyboard */,
 				3A7DF1182461769900148687 /* Info.plist */,
-				3A7DF12424617C4400148687 /* KittyData.swift */,
 			);
 			path = "Test Task";
 			sourceTree = "<group>";
