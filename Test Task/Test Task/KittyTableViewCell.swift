@@ -12,7 +12,7 @@ class KittyTableViewCell: UITableViewCell {
 
   @IBOutlet weak var cellView: UIView!
   
-  @IBOutlet weak var imgView: UIImageView!
+  @IBOutlet weak var imgView: CustomImageView!
   
   @IBOutlet weak var nameLbl: UILabel!
   
