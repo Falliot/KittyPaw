@@ -40,7 +40,15 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="zlJ-Ig-8FA" kind="show" id="WmM-oy-ej2"/>
+                                    <segue destination="zlJ-Ig-8FA" kind="show" identifier="toTableView" id="WmM-oy-ej2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mIw-6M-Xs5">
+                                <rect key="frame" x="110" y="209" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="buttonIsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MTk-5D-PFh"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -84,7 +92,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="72S-oT-6RX">
                                                     <rect key="frame" x="10" y="5" width="394" height="90"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nMk-Ar-V6k">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nMk-Ar-V6k" customClass="CustomImageView" customModule="Test_Task" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="90" id="JJc-TW-QM6"/>
@@ -197,7 +205,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VMT-n1-es2">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VMT-n1-es2" customClass="CustomImageView" customModule="Test_Task" customModuleProvider="target">
                                 <rect key="frame" x="10" y="54" width="394" height="439"/>
                             </imageView>
                         </subviews>
@@ -220,7 +228,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fg7-CE-AcV"/>
                     </view>
-                    <navigationItem key="navigationItem" id="dtp-Ev-WvT"/>
+                    <navigationItem key="navigationItem" id="dtp-Ev-WvT">
+                        <barButtonItem key="rightBarButtonItem" title="Wikipedia" id="DzF-8O-aiX">
+                            <connections>
+                                <action selector="wikiButtonIsClicked:" destination="X6S-dV-iE4" id="4zm-d2-jvt"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="idLbl" destination="dIi-yT-2Ow" id="2PT-R1-spG"/>
                         <outlet property="imgView" destination="VMT-n1-es2" id="Fb8-kh-atm"/>

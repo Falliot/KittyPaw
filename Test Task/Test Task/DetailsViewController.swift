@@ -13,10 +13,8 @@ class DetailsViewController: UIViewController {
   
   var kittyDetails: BreedImg?
   
-  @IBOutlet weak var imgView: UIImageView!
-  
-  var imageURL = String()
-  
+  @IBOutlet weak var imgView: CustomImageView!
+    
   @IBOutlet weak var nameLbl: UILabel!
   
   @IBOutlet weak var originLbl: UILabel!
@@ -34,33 +32,29 @@ class DetailsViewController: UIViewController {
     originLbl.text = kittyDetails?.breeds.first?.origin
     idLbl.text = kittyDetails?.breeds.first?.id
     temperamentLbl.text = kittyDetails?.breeds.first?.temperament
-  
-    let url = URL(string: imageURL)
-    imgView.downloaded(from: url!)
+        
+    imgView.downloadImage(urlString: kittyDetails!.url)
     
     temperamentLbl.adjustsFontSizeToFitWidth = true
     temperamentLbl.sizeToFit()
     temperamentLbl.numberOfLines = 0
   }
-}
-extension UIImageView {
-    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
-        contentMode = mode
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data, error == nil,
-                let image = UIImage(data: data)
-                else { return }
-            DispatchQueue.main.async() {
-                self.image = image
-            }
-        }.resume()
+//  override func loadView() {
+//    let webConfiguration = WKWebViewConfiguration()
+//    webView = WKWebView(frame: .zero, configuration: webConfiguration)
+//    webView.uiDelegate = self
+//    view = webView
+//  }
+  
+  
+  @IBAction func wikiButtonIsClicked(_ sender: Any) {
+    let url = URL(string: (kittyDetails?.breeds.first!.wikipediaURL)!)
+//    let myRequest = URLRequest(url: myURL!)
+//    webView.load(myRequest)
+    if UIApplication.shared.canOpenURL(url!) {
+        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
     }
-    func downloaded(from link: String, contentMode mode: UIView.ContentMode = .scaleAspectFit) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
-        guard let url = URL(string: link) else { return }
-        downloaded(from: url, contentMode: mode)
-    }
+    
+    
+  }
 }
-
