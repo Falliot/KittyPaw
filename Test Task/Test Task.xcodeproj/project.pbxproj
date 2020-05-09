@@ -17,6 +17,7 @@
 		3A7DF12124617ADF00148687 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DF12024617ADF00148687 /* ListViewController.swift */; };
 		3A7DF12524617C4400148687 /* KittyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DF12424617C4400148687 /* KittyData.swift */; };
 		3A7DF12724627A5000148687 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DF12624627A5000148687 /* DetailsViewController.swift */; };
+		3A7DF12B2463D1B500148687 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DF12A2463D1B500148687 /* Utility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		3A7DF12024617ADF00148687 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		3A7DF12424617C4400148687 /* KittyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KittyData.swift; sourceTree = "<group>"; };
 		3A7DF12624627A5000148687 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		3A7DF12A2463D1B500148687 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				3A7DF10E2461769700148687 /* ViewController.swift */,
 				3A7DF12024617ADF00148687 /* ListViewController.swift */,
 				3A7DF12624627A5000148687 /* DetailsViewController.swift */,
+				3A7DF12A2463D1B500148687 /* Utility.swift */,
 				3A7DF11E24617A5700148687 /* KittyTableViewCell.swift */,
 				3A7DF12424617C4400148687 /* KittyData.swift */,
 				3A7DF1102461769700148687 /* Main.storyboard */,
@@ -154,6 +157,7 @@
 				3A7DF10B2461769700148687 /* AppDelegate.swift in Sources */,
 				3A7DF10D2461769700148687 /* SceneDelegate.swift in Sources */,
 				3A7DF12524617C4400148687 /* KittyData.swift in Sources */,
+				3A7DF12B2463D1B500148687 /* Utility.swift in Sources */,
 				3A7DF12724627A5000148687 /* DetailsViewController.swift in Sources */,
 				3A7DF12124617ADF00148687 /* ListViewController.swift in Sources */,
 				3A7DF11F24617A5700148687 /* KittyTableViewCell.swift in Sources */,
