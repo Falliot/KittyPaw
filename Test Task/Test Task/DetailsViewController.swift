@@ -17,11 +17,13 @@ class DetailsViewController: UIViewController {
     
   @IBOutlet weak var nameLbl: UILabel!
   
+  @IBOutlet weak var descriptionLbl: UILabel!
+  
   @IBOutlet weak var originLbl: UILabel!
   
-  @IBOutlet weak var idLbl: UILabel!
-  
   @IBOutlet weak var temperamentLbl: UILabel!
+  
+  @IBOutlet weak var wikiButton: UIBarButtonItem!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -29,15 +31,30 @@ class DetailsViewController: UIViewController {
     // Do any additional setup after loading the view.
     
     nameLbl.text = kittyDetails?.breeds.first?.name
-    originLbl.text = kittyDetails?.breeds.first?.origin
-    idLbl.text = kittyDetails?.breeds.first?.id
+    descriptionLbl.text = kittyDetails?.breeds.first?.description
+    originLbl.text = "From: " + (kittyDetails?.breeds.first!.origin)!
+    
     temperamentLbl.text = kittyDetails?.breeds.first?.temperament
         
     imgView.downloadImage(urlString: kittyDetails!.url)
     
-    temperamentLbl.adjustsFontSizeToFitWidth = true
-    temperamentLbl.sizeToFit()
-    temperamentLbl.numberOfLines = 0
+    textFixer(textLabel: descriptionLbl)
+    textFixer(textLabel: temperamentLbl)
+//    temperamentLbl.adjustsFontSizeToFitWidth = true
+//    temperamentLbl.sizeToFit()
+//    temperamentLbl.numberOfLines = 0
+    
+    
+    if kittyDetails?.breeds.first?.id == "ebur" {
+      wikiButton.isEnabled = false
+    }
+    
+  }
+  
+  func textFixer(textLabel: UILabel) {
+    textLabel.adjustsFontSizeToFitWidth = true
+    textLabel.sizeToFit()
+    textLabel.numberOfLines = 0
   }
 //  override func loadView() {
 //    let webConfiguration = WKWebViewConfiguration()

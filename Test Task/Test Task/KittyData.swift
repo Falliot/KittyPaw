@@ -46,13 +46,15 @@ struct BreedImg: Codable {
 
 struct Breeds: Codable {
   let id: String
+  let description: String
   let name: String
   let temperament: String
   let origin: String
-  let wikipediaURL: String
+  let wikipediaURL: String?
   
   enum CodingKeys: String, CodingKey {
     case id
+    case description
     case name
     case temperament
     case origin

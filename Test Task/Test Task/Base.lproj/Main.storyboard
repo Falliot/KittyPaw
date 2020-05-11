@@ -176,29 +176,29 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="692"/>
                                 <color key="backgroundColor" red="0.19638324870000001" green="0.19543213719999999" blue="0.1931884556" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillEqually" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="JFm-8v-Rnt">
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="JFm-8v-Rnt">
                                 <rect key="frame" x="20" y="513" width="374" height="203"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93a-ai-iLK">
-                                        <rect key="frame" x="164.66666666666666" y="0.0" width="45" height="35.666666666666664"/>
+                                        <rect key="frame" x="164.66666666666666" y="0.0" width="45" height="43"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kiB-v7-ZFD">
+                                        <rect key="frame" x="143.33333333333334" y="48" width="87.666666666666657" height="42.666666666666657"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Origin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLU-ms-uhE">
-                                        <rect key="frame" x="164" y="55.666666666666629" width="46" height="36"/>
+                                        <rect key="frame" x="164" y="95.666666666666629" width="46" height="43"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Temperament" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Q8-IU-eA0">
-                                        <rect key="frame" x="134" y="111.66666666666664" width="106" height="35.666666666666671"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Id" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIi-yT-2Ow">
-                                        <rect key="frame" x="180" y="167.33333333333337" width="14.333333333333343" height="35.666666666666657"/>
+                                        <rect key="frame" x="134" y="143.66666666666663" width="106" height="59.333333333333343"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -236,11 +236,12 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="idLbl" destination="dIi-yT-2Ow" id="2PT-R1-spG"/>
+                        <outlet property="descriptionLbl" destination="kiB-v7-ZFD" id="BQZ-8r-mY9"/>
                         <outlet property="imgView" destination="VMT-n1-es2" id="Fb8-kh-atm"/>
                         <outlet property="nameLbl" destination="93a-ai-iLK" id="eAF-cq-CC6"/>
                         <outlet property="originLbl" destination="zLU-ms-uhE" id="ene-Zu-4Ld"/>
                         <outlet property="temperamentLbl" destination="1Q8-IU-eA0" id="uVr-lF-eJ4"/>
+                        <outlet property="wikiButton" destination="DzF-8O-aiX" id="44h-F5-UyW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DVh-cE-B7P" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
