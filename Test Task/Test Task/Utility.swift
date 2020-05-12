@@ -14,13 +14,13 @@ class CustomImageView: UIImageView {
   
   var imageUrlString: String?
   
-  func downloadImage(urlString: String) {
+  func downloadImage(urlString: String, placeholder: UIImage? = nil) {
     
     imageUrlString = urlString
     
     guard let url = URL(string: urlString) else { return }
     
-    image = nil
+    image = placeholder
     
     if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
       self.image = imageFromCache

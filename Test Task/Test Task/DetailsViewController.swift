@@ -36,7 +36,7 @@ class DetailsViewController: UIViewController {
     
     temperamentLbl.text = kittyDetails?.breeds.first?.temperament
         
-    imgView.downloadImage(urlString: kittyDetails!.url)
+    imgView.downloadImage(urlString: kittyDetails!.url, placeholder: UIImage(named: "loading"))
     
     textFixer(textLabel: descriptionLbl)
     textFixer(textLabel: temperamentLbl)
