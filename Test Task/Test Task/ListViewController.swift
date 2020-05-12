@@ -15,17 +15,22 @@ class ListViewController: UIViewController {
   
   var kittyArray = [KittyData]()
   
-  var filteredKitties = [KittyData]()
+  var filteredKitties = [BreedImg]()
   
-  let searchController = UISearchController(searchResultsController: nil)
+  var imageDetails = [BreedImg]()
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    
+    print("kittyArray\(kittyArray)")
+    print("filteredKitties\(filteredKitties)")
+    print("imageDetails\(imageDetails)")
+    
     getKitties()
     configureDelegates()
-
+    
     // Do any additional setup after loading the view.
   }
   
@@ -54,10 +59,12 @@ class ListViewController: UIViewController {
         
         let decodingData = try JSONDecoder().decode([KittyData].self, from: safeData)
         self.kittyArray = decodingData
-        self.filteredKitties = self.kittyArray
-        DispatchQueue.main.async {
-          self.tableView.reloadData()
+        
+        print(self.kittyArray.count)
+        for indexId in decodingData {
+          self.getImage(kittyId: indexId.id)
         }
+        
         print("Kitties list: \(decodingData)")
         
       } catch {
@@ -66,17 +73,50 @@ class ListViewController: UIViewController {
     }.resume()
   }
   
+  func getImage(kittyId: String) {
+    guard let resourceURL = URL(string:"https://api.thecatapi.com/v1/images/search?breed_id=\(kittyId)") else {fatalError()}
+    var urlRequest = URLRequest(url: resourceURL)
+    urlRequest.httpMethod = "GET"
+    urlRequest.setValue("eb4517d5-865b-4e49-9b2f-96acfa53c0b2", forHTTPHeaderField: "x-api-key")
+    
+    URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+      
+      if error != nil {
+        print("Error occured: \(String(describing: error))")
+        return
+      }
+      
+      guard let safeData = data  else { return }
+      do {
+        
+        let decodingData = try JSONDecoder().decode([BreedImg].self, from: safeData)
+        self.imageDetails.append(contentsOf: decodingData)
+  
+        
+        print("imagedetails.count : \(self.imageDetails.count)")
+        self.filteredKitties = self.imageDetails
+        print("Kitties list: \(decodingData)")
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(500)) {
+          self.tableView.reloadData()
+        }
+      } catch {
+        print("Decoder error:  \(String(describing: error))")
+      }
+    }.resume()
+  }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "toDetails" {
       if let indexPath = tableView.indexPathForSelectedRow {
         
-        let kitty: KittyData
-  
-        kitty = kittyArray[indexPath.row]
+        //        let breed: Breeds
+        //        breed = breedsDetails[indexPath.row]
+        let img: BreedImg
+        img = imageDetails[indexPath.row]
         
         let destinationVC = segue.destination as! DetailsViewController
-          destinationVC.kittyDetails = kitty
+        destinationVC.kittyDetails = img
       }
     }
   }
@@ -87,7 +127,7 @@ class ListViewController: UIViewController {
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    kittyArray.count
+    imageDetails.count
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -99,11 +139,15 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
     
-    let kittyCell = kittyArray[indexPath.row]
+    let kittyCell = imageDetails[indexPath.row]
     
-    cell.nameLbl.text? = kittyCell.name
-    cell.originLbl.text? = kittyCell.origin
-    cell.imgView.image = UIImage(named: "lion")
+    cell.nameLbl.text? = kittyCell.breeds.first!.name
+    cell.originLbl.text? = kittyCell.breeds.first!.origin
+    
+    
+    cell.imgView.downloadImage(urlString: kittyCell.url, placeholder: UIImage(named: "loading"))
+    
+    //    cell.imgView.image = UIImage(named: "loading")
     
     cell.imgView.layer.cornerRadius = cell.imgView.frame.height / 2
     
@@ -111,16 +155,17 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
   }
 }
 
+
 extension ListViewController: UISearchBarDelegate {
- 
+  
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     guard !searchText.isEmpty else {
-      kittyArray = filteredKitties
+      imageDetails = filteredKitties
       tableView.reloadData()
       return
     }
-    kittyArray = filteredKitties.filter({ kitty -> Bool in
-      kitty.origin.lowercased().contains(searchText.lowercased())
+    imageDetails = filteredKitties.filter({ kitty -> Bool in
+      kitty.breeds.first!.origin.lowercased().contains(searchText.lowercased())
     })
     tableView.reloadData()
   }
