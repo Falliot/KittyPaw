@@ -14,35 +14,33 @@ class DetailsViewController: UIViewController {
   var kittyDetails: BreedImg?
   
   @IBOutlet weak var imgView: CustomImageView!
-    
-  @IBOutlet weak var nameLbl: UILabel!
   
   @IBOutlet weak var descriptionLbl: UILabel!
+  
+  @IBOutlet weak var weightLbl: UILabel!
   
   @IBOutlet weak var originLbl: UILabel!
   
   @IBOutlet weak var temperamentLbl: UILabel!
   
   @IBOutlet weak var wikiButton: UIBarButtonItem!
+
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     // Do any additional setup after loading the view.
     
-    nameLbl.text = kittyDetails?.breeds.first?.name
+    title = kittyDetails?.breeds.first?.name
     descriptionLbl.text = kittyDetails?.breeds.first?.description
     originLbl.text = "From: " + (kittyDetails?.breeds.first!.origin)!
+    weightLbl.text = "Weight " + (kittyDetails?.breeds.first?.weight.metric)! + " kg"
     
     temperamentLbl.text = kittyDetails?.breeds.first?.temperament
-        
-    imgView.downloadImage(urlString: kittyDetails!.url, placeholder: UIImage(named: "loading"))
     
     textFixer(textLabel: descriptionLbl)
     textFixer(textLabel: temperamentLbl)
-//    temperamentLbl.adjustsFontSizeToFitWidth = true
-//    temperamentLbl.sizeToFit()
-//    temperamentLbl.numberOfLines = 0
+    
     
     
     if kittyDetails?.breeds.first?.id == "ebur" {
@@ -50,28 +48,39 @@ class DetailsViewController: UIViewController {
     }
     
   }
-  
+
   func textFixer(textLabel: UILabel) {
     textLabel.adjustsFontSizeToFitWidth = true
     textLabel.sizeToFit()
     textLabel.numberOfLines = 0
   }
-//  override func loadView() {
-//    let webConfiguration = WKWebViewConfiguration()
-//    webView = WKWebView(frame: .zero, configuration: webConfiguration)
-//    webView.uiDelegate = self
-//    view = webView
-//  }
-  
   
   @IBAction func wikiButtonIsClicked(_ sender: Any) {
     let url = URL(string: (kittyDetails?.breeds.first!.wikipediaURL)!)
-//    let myRequest = URLRequest(url: myURL!)
-//    webView.load(myRequest)
     if UIApplication.shared.canOpenURL(url!) {
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+      UIApplication.shared.open(url!, options: [:], completionHandler: nil)
     }
-    
-    
   }
+    
+  @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
+    let newImageView = UIImageView(image: imgView.image)
+    newImageView.frame = UIScreen.main.bounds
+    newImageView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+    newImageView.contentMode = .scaleAspectFit
+    newImageView.isUserInteractionEnabled = true
+    let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+    newImageView.addGestureRecognizer(tap)
+    self.view.addSubview(newImageView)
+    self.navigationController?.isNavigationBarHidden = true
+    self.tabBarController?.tabBar.isHidden = true
+  }
+  
+  @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+    self.navigationController?.isNavigationBarHidden = false
+    self.tabBarController?.tabBar.isHidden = false
+    sender.view?.removeFromSuperview()
+  }
+  
+  
+  
 }
