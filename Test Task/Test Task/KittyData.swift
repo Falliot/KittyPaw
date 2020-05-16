@@ -45,6 +45,7 @@ struct BreedImg: Codable {
 }
 
 struct Breeds: Codable {
+  let weight : Weight
   let id: String
   let description: String
   let name: String
@@ -53,6 +54,7 @@ struct Breeds: Codable {
   let wikipediaURL: String?
   
   enum CodingKeys: String, CodingKey {
+    case weight
     case id
     case description
     case name
@@ -69,5 +71,10 @@ struct Breeds: Codable {
 //    self.temperament = temperament
 //    self.origin = origin
 //    self.wikipediaURL = wiki
-//  }
+//  }imperial
+}
+
+struct Weight: Codable {
+  let imperial: String
+  let metric: String
 }
