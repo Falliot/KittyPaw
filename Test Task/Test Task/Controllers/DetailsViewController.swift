@@ -10,7 +10,6 @@ import UIKit
 
 class DetailsViewController: UIViewController {
   
-  
   var kittyDetails: BreedImg?
   
   @IBOutlet weak var imgView: CustomImageView!
@@ -24,11 +23,10 @@ class DetailsViewController: UIViewController {
   @IBOutlet weak var temperamentLbl: UILabel!
   
   @IBOutlet weak var wikiButton: UIBarButtonItem!
-
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    
     // Do any additional setup after loading the view.
     
     title = kittyDetails?.breeds.first?.name
@@ -41,14 +39,14 @@ class DetailsViewController: UIViewController {
     textFixer(textLabel: descriptionLbl)
     textFixer(textLabel: temperamentLbl)
     
-    
+    imgView.downloadImage(urlString: kittyDetails!.url)
     
     if kittyDetails?.breeds.first?.id == "ebur" {
       wikiButton.isEnabled = false
     }
     
   }
-
+  
   func textFixer(textLabel: UILabel) {
     textLabel.adjustsFontSizeToFitWidth = true
     textLabel.sizeToFit()
@@ -61,7 +59,7 @@ class DetailsViewController: UIViewController {
       UIApplication.shared.open(url!, options: [:], completionHandler: nil)
     }
   }
-    
+  
   @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
     let newImageView = UIImageView(image: imgView.image)
     newImageView.frame = UIScreen.main.bounds
@@ -80,7 +78,4 @@ class DetailsViewController: UIViewController {
     self.tabBarController?.tabBar.isHidden = false
     sender.view?.removeFromSuperview()
   }
-  
-  
-  
 }
