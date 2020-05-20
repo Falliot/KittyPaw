@@ -16,17 +16,8 @@ class CustomImageView: UIImageView {
   let activityIndicator = UIActivityIndicatorView()
   
   func downloadImage(urlString: String) {
-      
-    // setup activityIndicator...
-    activityIndicator.style = .large
-    activityIndicator.color = .darkGray
-
-    addSubview(activityIndicator)
-    activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-    activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-    activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-
     
+    activityIndicatorSetup()
     
     imageUrlString = urlString
     
@@ -46,27 +37,29 @@ class CustomImageView: UIImageView {
       if error != nil {
         print("Error occured during downloading: \(String(describing: error))")
         DispatchQueue.main.async {
-         self.activityIndicator.stopAnimating()
+          self.activityIndicator.stopAnimating()
         }
         return
       }
       
       DispatchQueue.main.async {
-        
         if let imageToCache = UIImage(data: data!) {
-        
-        print("Success: \(urlString)")
-        
-        if self.imageUrlString == urlString {
-          
-          self.image = imageToCache
-        }
+          if self.imageUrlString == urlString {
+            self.image = imageToCache
+          }
           imageCache.setObject(imageToCache, forKey: urlString as NSString)
         }
-        
         self.activityIndicator.stopAnimating()
       }
-      
     }).resume()
-  }  
+  }
+  
+  func activityIndicatorSetup() {
+    activityIndicator.style = .large
+    activityIndicator.color = .darkGray
+    addSubview(activityIndicator)
+    activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+    activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+    activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+  }
 }
