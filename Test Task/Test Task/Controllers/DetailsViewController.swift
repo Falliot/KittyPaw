@@ -41,15 +41,16 @@ class DetailsViewController: UIViewController {
     textFixer(textLabel: descriptionLbl)
     textFixer(textLabel: temperamentLbl)
     
-    imgView.downloadImage(urlString: kittyDetails!.url, completion: { result in
+    DispatchQueue.main.async {
+      self.imgView.downloadImage(urlString: self.kittyDetails!.url, completion: { result in
       switch result {
       case .success:
         print("\(String(describing: self.title)), image was loaded")
       case .failure(let error):
-        self.utility.alert(controller: self, message: "Error: \(error)")
+        self.utility.getError(error: error as NSError, controller: self)
       }
     })
-    
+    }
     if kittyDetails?.breeds.first?.id == "ebur" {
       wikiButton.isEnabled = false
     }
