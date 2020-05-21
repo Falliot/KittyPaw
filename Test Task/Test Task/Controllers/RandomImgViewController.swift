@@ -12,9 +12,14 @@ class RandomImgViewController: UIViewController {
   
   @IBOutlet weak var imgView: CustomImageView!
   
+  @IBOutlet weak var refreshButton: UIButton!
+  
+  var utility = Utility()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     navigationItem.title = "Tap on kitty to view it full size"
+    refreshButton.isHidden = true
     getImage()
     // Do any additional setup after loading the view.
   }
@@ -23,7 +28,7 @@ class RandomImgViewController: UIViewController {
     self.navigationController?.isNavigationBarHidden = false
   }
   
-  @IBAction func requestButtonIsClicked(_ sender: Any) {
+  @IBAction func refreshtButtonIsClicked(_ sender: Any) {
     getImage()
   }
   
@@ -33,6 +38,7 @@ class RandomImgViewController: UIViewController {
     URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
       
       if error != nil {
+        self.utility.alert(controller: self, message: "Error: \(String(describing: error))")
         print("Error occured: \(String(describing: error))")
         return
       }
@@ -41,9 +47,15 @@ class RandomImgViewController: UIViewController {
         let decodingData = try JSONDecoder().decode([BreedImg].self, from: safeData)
         
         DispatchQueue.main.async {
-          self.imgView.downloadImage(urlString: decodingData.first!.url)
+          self.imgView.downloadImage(urlString: decodingData.first!.url, completion: { result in
+            switch result {
+            case .success:
+              self.refreshButton.isHidden = false
+            case .failure(let error):
+              self.utility.alert(controller: self, message: "Error: \(error)")
+            }
+          })
         }
-        
         print("JSON data: \(decodingData)")
       } catch {
         print("Decoder error:  \(String(describing: error))")

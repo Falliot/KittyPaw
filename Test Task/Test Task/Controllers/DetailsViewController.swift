@@ -12,6 +12,8 @@ class DetailsViewController: UIViewController {
   
   var kittyDetails: BreedImg?
   
+  var utility = Utility()
+  
   @IBOutlet weak var imgView: CustomImageView!
   
   @IBOutlet weak var descriptionLbl: UILabel!
@@ -39,7 +41,14 @@ class DetailsViewController: UIViewController {
     textFixer(textLabel: descriptionLbl)
     textFixer(textLabel: temperamentLbl)
     
-    imgView.downloadImage(urlString: kittyDetails!.url)
+    imgView.downloadImage(urlString: kittyDetails!.url, completion: { result in
+      switch result {
+      case .success:
+        print("\(String(describing: self.title)), image was loaded")
+      case .failure(let error):
+        self.utility.alert(controller: self, message: "Error: \(error)")
+      }
+    })
     
     if kittyDetails?.breeds.first?.id == "ebur" {
       wikiButton.isEnabled = false

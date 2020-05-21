@@ -19,11 +19,11 @@ class ListViewController: UIViewController {
   
   var imageDetails = [BreedImg]()
   
-  var counter = 0
+  var utility = Utility()
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    getKitties()
+    getKittyId()
     configureDelegates()
     hideKeyboardOnTap()
     // Do any additional setup after loading the view.
@@ -40,7 +40,7 @@ class ListViewController: UIViewController {
     tableView.dataSource = self
   }
   
-  func getKitties() {
+  func getKittyId() {
     guard let resourceURL = URL(string:"https://api.thecatapi.com/v1/breeds") else {fatalError()}
     var urlRequest = URLRequest(url: resourceURL)
     urlRequest.httpMethod = "GET"
@@ -49,6 +49,7 @@ class ListViewController: UIViewController {
     URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
       
       if error != nil {
+        self.utility.alert(controller: self, message: "Error: \(String(describing: error))")
         print("Error occured: \(String(describing: error))")
         return
       }
@@ -60,7 +61,7 @@ class ListViewController: UIViewController {
         self.kittyArray = decodingData
         
         for indexId in decodingData {
-          self.getImage(kittyId: indexId.id)
+          self.getKittyData(kittyId: indexId.id)
         }
         
         print("Kitties list: \(decodingData)")
@@ -71,7 +72,7 @@ class ListViewController: UIViewController {
     }.resume()
   }
   
-  func getImage(kittyId: String) {
+  func getKittyData(kittyId: String) {
     guard let resourceURL = URL(string:"https://api.thecatapi.com/v1/images/search?breed_id=\(kittyId)") else {fatalError()}
     var urlRequest = URLRequest(url: resourceURL)
     urlRequest.httpMethod = "GET"
@@ -80,6 +81,7 @@ class ListViewController: UIViewController {
     URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
       
       if error != nil {
+        self.utility.alert(controller: self, message: "Error: \(String(describing: error))")
         print("Error occured: \(String(describing: error))")
         return
       }
@@ -133,8 +135,14 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     cell.nameLbl.text? = kittyCell.breeds.first!.name
     cell.originLbl.text? = kittyCell.breeds.first!.origin
-    cell.imgView.downloadImage(urlString: kittyCell.url)
-    
+    cell.imgView.downloadImage(urlString: kittyCell.url, completion: { result in
+      switch result {
+      case .success:
+        print("\(String(describing: cell.nameLbl.text)) image was loaded")
+      case .failure(let error):
+        self.utility.alert(controller: self, message: "Error: \(error)")
+      }
+    })
     cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
     cell.imgView.layer.cornerRadius = cell.imgView.frame.height / 2
     

@@ -15,7 +15,7 @@ class CustomImageView: UIImageView {
   
   let activityIndicator = UIActivityIndicatorView()
   
-  func downloadImage(urlString: String) {
+  func downloadImage(urlString: String, completion: @escaping(Result<String, Error>) -> Void) {
     
     activityIndicatorSetup()
     
@@ -29,13 +29,14 @@ class CustomImageView: UIImageView {
     if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
       self.image = imageFromCache
       activityIndicator.stopAnimating()
+      completion(.success("Image exists"))
       return
     }
     
     URLSession.shared.dataTask(with: url, completionHandler: { (data, respones, error) in
       
       if error != nil {
-        print("Error occured during downloading: \(String(describing: error))")
+        completion(.failure(error!))
         DispatchQueue.main.async {
           self.activityIndicator.stopAnimating()
         }
@@ -49,6 +50,7 @@ class CustomImageView: UIImageView {
           }
           imageCache.setObject(imageToCache, forKey: urlString as NSString)
         }
+        completion(.success("Success!"))
         self.activityIndicator.stopAnimating()
       }
     }).resume()
@@ -62,4 +64,15 @@ class CustomImageView: UIImageView {
     activityIndicator.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
     activityIndicator.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
   }
+}
+
+class Utility {
+  
+  func alert(controller: UIViewController, message: String) {
+    let alertController = UIAlertController(title: "KittyPaw", message:
+      message , preferredStyle: .alert)
+    alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+    controller.present(alertController, animated: true, completion: nil)
+  }
+  
 }
