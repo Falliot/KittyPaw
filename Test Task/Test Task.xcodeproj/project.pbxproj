@@ -67,7 +67,6 @@
 		3A7DF0FE2461769700148687 = {
 			isa = PBXGroup;
 			children = (
-				3AF67BF12474F3940059A61B /* Fonts */,
 				3A7DF1092461769700148687 /* Test Task */,
 				3A7DF1082461769700148687 /* Products */,
 			);
@@ -84,13 +83,14 @@
 		3A7DF1092461769700148687 /* Test Task */ = {
 			isa = PBXGroup;
 			children = (
-				3A7DF1182461769900148687 /* Info.plist */,
-				3AF67BEC2474F1FD0059A61B /* Supporting Files */,
+				3AF67BF12474F3940059A61B /* Fonts */,
 				3AF67BEB2474F1E60059A61B /* Controllers */,
+				3A30EBF72474F84100EEDDC3 /* Storyboards */,
+				3AF67BEC2474F1FD0059A61B /* Supporting Files */,
 				3A7DF12A2463D1B500148687 /* Utility.swift */,
 				3A7DF11E24617A5700148687 /* KittyTableViewCell.swift */,
 				3A7DF12424617C4400148687 /* KittyData.swift */,
-				3A30EBF72474F84100EEDDC3 /* Storyboards */,
+				3A7DF1182461769900148687 /* Info.plist */,
 			);
 			path = "Test Task";
 			sourceTree = "<group>";
