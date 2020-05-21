@@ -59,10 +59,9 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UIAppFonts</key>
-  <array>
-    <string>Quicksand-Dash.otf</string>
-    <string>Quicksand-Bold.otf</string>
-    <string>Quicksand-BoldItalic.otf</string>
-  </array>
+	<array>
+		<string>Quicksand-Bold.otf</string>
+		<string>Quicksand-BoldItalic.otf</string>
+	</array>
 </dict>
 </plist>
