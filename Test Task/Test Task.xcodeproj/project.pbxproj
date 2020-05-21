@@ -19,7 +19,6 @@
 		3A7DF12724627A5000148687 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DF12624627A5000148687 /* DetailsViewController.swift */; };
 		3A7DF12B2463D1B500148687 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7DF12A2463D1B500148687 /* Utility.swift */; };
 		3AF67BB524726E760059A61B /* RandomImgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF67BB424726E760059A61B /* RandomImgViewController.swift */; };
-		3AF67BF52474F3C80059A61B /* Quicksand-Dash.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF67BF22474F3C80059A61B /* Quicksand-Dash.otf */; };
 		3AF67BF62474F3C80059A61B /* Quicksand-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF67BF32474F3C80059A61B /* Quicksand-BoldItalic.otf */; };
 		3AF67BF72474F3C80059A61B /* Quicksand-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 3AF67BF42474F3C80059A61B /* Quicksand-Bold.otf */; };
 /* End PBXBuildFile section */
@@ -39,7 +38,6 @@
 		3A7DF12624627A5000148687 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		3A7DF12A2463D1B500148687 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		3AF67BB424726E760059A61B /* RandomImgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomImgViewController.swift; sourceTree = "<group>"; };
-		3AF67BF22474F3C80059A61B /* Quicksand-Dash.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Dash.otf"; sourceTree = "<group>"; };
 		3AF67BF32474F3C80059A61B /* Quicksand-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-BoldItalic.otf"; sourceTree = "<group>"; };
 		3AF67BF42474F3C80059A61B /* Quicksand-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Quicksand-Bold.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,7 +119,6 @@
 			children = (
 				3AF67BF42474F3C80059A61B /* Quicksand-Bold.otf */,
 				3AF67BF32474F3C80059A61B /* Quicksand-BoldItalic.otf */,
-				3AF67BF22474F3C80059A61B /* Quicksand-Dash.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -187,7 +184,6 @@
 				3AF67BF72474F3C80059A61B /* Quicksand-Bold.otf in Resources */,
 				3AF67BF62474F3C80059A61B /* Quicksand-BoldItalic.otf in Resources */,
 				3A7DF1172461769900148687 /* LaunchScreen.storyboard in Resources */,
-				3AF67BF52474F3C80059A61B /* Quicksand-Dash.otf in Resources */,
 				3A7DF1142461769900148687 /* Assets.xcassets in Resources */,
 				3A7DF1122461769700148687 /* Main.storyboard in Resources */,
 			);

@@ -24,12 +24,16 @@ class CustomImageView: UIImageView {
     guard let url = URL(string: urlString) else { return }
     
     image = nil
-    activityIndicator.startAnimating()
+    DispatchQueue.main.async {
+      self.activityIndicator.startAnimating()
+    }
     
     if let imageFromCache = imageCache.object(forKey: urlString as NSString) {
       self.image = imageFromCache
-      activityIndicator.stopAnimating()
-      completion(.success("Image exists"))
+      DispatchQueue.main.async {
+        self.activityIndicator.stopAnimating()
+      }
+      print("Image exists")
       return
     }
     
@@ -50,11 +54,29 @@ class CustomImageView: UIImageView {
           }
           imageCache.setObject(imageToCache, forKey: urlString as NSString)
         }
-        completion(.success("Success!"))
+        completion(.success("Image is downloaded"))
         self.activityIndicator.stopAnimating()
       }
     }).resume()
+    
   }
+  
+  func enableZoom() {
+    let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(startZooming(_:)))
+    isUserInteractionEnabled = true
+    addGestureRecognizer(pinchGesture)
+  }
+  
+  @objc
+  private func startZooming(_ sender: UIPinchGestureRecognizer) {
+    let scaleResult = sender.view?.transform.scaledBy(x: sender.scale, y: sender.scale)
+    guard let scale = scaleResult, scale.a > 1, scale.d > 1 else { return }
+    sender.view?.transform = scale
+    sender.scale = 1
+  }
+  
+  
+  
   
   func activityIndicatorSetup() {
     activityIndicator.style = .large
@@ -69,10 +91,22 @@ class CustomImageView: UIImageView {
 class Utility {
   
   func alert(controller: UIViewController, message: String) {
-    let alertController = UIAlertController(title: "KittyPaw", message:
-      message , preferredStyle: .alert)
-    alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
-    controller.present(alertController, animated: true, completion: nil)
+    DispatchQueue.main.async {
+      let alertController = UIAlertController(title: "KittyPaw", message:
+        message , preferredStyle: .alert)
+      alertController.addAction(UIAlertAction(title: "Dismiss", style: .default))
+      controller.present(alertController, animated: true, completion: nil)
+    }
+  }
+  
+  func getError(error: NSError, controller: UIViewController) {
+    switch error.code {
+    case -999:
+      print("userCancel")
+    default:
+      print("EROROROROR")
+      alert(controller: controller, message: "Error: \(error)")
+    }
   }
   
 }
