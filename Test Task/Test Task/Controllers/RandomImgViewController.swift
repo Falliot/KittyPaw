@@ -38,8 +38,7 @@ class RandomImgViewController: UIViewController {
     URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
       
       if error != nil {
-        self.utility.alert(controller: self, message: "Error: \(String(describing: error))")
-        print("Error occured: \(String(describing: error))")
+        self.utility.getError(error: error! as NSError, controller: self)
         return
       }
       guard let safeData = data  else { return }
@@ -65,21 +64,21 @@ class RandomImgViewController: UIViewController {
   
   @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
     navigationItem.title = ""
+    self.navigationController?.isNavigationBarHidden = true
     let newImageView = UIImageView(image: imgView.image)
     newImageView.frame = UIScreen.main.bounds
     newImageView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
     newImageView.contentMode = .scaleAspectFit
     newImageView.isUserInteractionEnabled = true
+    
     let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
     newImageView.addGestureRecognizer(tap)
     self.view.addSubview(newImageView)
-    self.navigationController?.isNavigationBarHidden = true
-    self.tabBarController?.tabBar.isHidden = true
+    
   }
   
   @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
     self.navigationController?.isNavigationBarHidden = false
-    self.tabBarController?.tabBar.isHidden = false
     sender.view?.removeFromSuperview()
   }
 }
