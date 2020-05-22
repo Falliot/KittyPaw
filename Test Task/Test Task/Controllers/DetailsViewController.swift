@@ -8,11 +8,15 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController {
+class DetailsViewController: UIViewController, UIScrollViewDelegate {
   
   var kittyDetails: BreedImg?
   
   var utility = Utility()
+  
+  var scrollView : UIScrollView!
+  
+  var newImageView = UIImageView()
   
   @IBOutlet weak var imgView: CustomImageView!
   
@@ -63,6 +67,18 @@ class DetailsViewController: UIViewController {
     textLabel.numberOfLines = 0
   }
   
+  
+   func setupScrollView() {
+     scrollView=UIScrollView()
+     scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+     scrollView.bounces=false
+     let minScale = scrollView.frame.size.width / newImageView.frame.size.width;
+     scrollView.minimumZoomScale = minScale
+     scrollView.maximumZoomScale = 5.0
+     scrollView.contentSize = newImageView.frame.size
+     scrollView.delegate=self;
+   }
+  
   @IBAction func wikiButtonIsClicked(_ sender: Any) {
     let url = URL(string: (kittyDetails?.breeds.first!.wikipediaURL)!)
     if UIApplication.shared.canOpenURL(url!) {
@@ -71,21 +87,28 @@ class DetailsViewController: UIViewController {
   }
   
   @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
-    let newImageView = UIImageView(image: imgView.image)
-    newImageView.frame = UIScreen.main.bounds
-    newImageView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-    newImageView.contentMode = .scaleAspectFit
-    newImageView.isUserInteractionEnabled = true
-    let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
-    newImageView.addGestureRecognizer(tap)
-    self.view.addSubview(newImageView)
-    self.navigationController?.isNavigationBarHidden = true
-    self.tabBarController?.tabBar.isHidden = true
-  }
-  
-  @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
-    self.navigationController?.isNavigationBarHidden = false
-    self.tabBarController?.tabBar.isHidden = false
-    sender.view?.removeFromSuperview()
-  }
+   self.navigationController?.isNavigationBarHidden = true
+      newImageView = UIImageView(image: imgView.image)
+      newImageView.frame = UIScreen.main.bounds
+      newImageView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+      newImageView.contentMode = .scaleAspectFit
+      newImageView.isUserInteractionEnabled = true
+      
+      setupScrollView()
+      
+      self.view.addSubview(scrollView)
+      let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+      scrollView.addGestureRecognizer(tap)
+      scrollView.addSubview(newImageView)
+      
+    }
+    
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+      self.navigationController?.isNavigationBarHidden = false
+      sender.view?.removeFromSuperview()
+    }
+    
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+      return self.newImageView
+    }
 }
