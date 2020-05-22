@@ -32,22 +32,27 @@ class ListViewController: UIViewController {
     super.viewWillAppear(animated)
     getKittyId()
     self.navigationController?.isNavigationBarHidden = false
-  }
-  
-  override func viewWillDisappear(_ animated: Bool) {
-    super.viewWillDisappear(animated)
     
-    for imgURL in imageDetails {
-      cancelTaskWithUrl(imgURL.url)
-      print("Cancelled: \(imgURL.url)")
-    }
-    for kittyData in kittyArray {
-    cancelTaskWithUrl("https://api.thecatapi.com/v1/images/search?breed_id=\(kittyData.id)")
-    print("Cancelled: \(kittyData.id)")
-    }
-    cancelTaskWithUrl("https://api.thecatapi.com/v1/breeds")
   }
-  
+  override func didMove(toParent parent: UIViewController?) {
+    super.didMove(toParent: parent)
+    if parent == nil {
+      for imgURL in imageDetails {
+        cancelTaskWithUrl(imgURL.url)
+        print("Cancelled: \(imgURL.breeds.first?.name)")
+      }
+      for kittyData in kittyArray {
+        cancelTaskWithUrl("https://api.thecatapi.com/v1/images/search?breed_id=\(kittyData.id)")
+        print("Cancelled: \(kittyData.id)")
+      }
+      cancelTaskWithUrl("https://api.thecatapi.com/v1/breeds")
+      self.kittyArray.removeAll()
+      self.imageDetails.removeAll()
+      self.filteredKitties.removeAll()
+      self.tableView.reloadData()
+      print("imageDetails.count\(imageDetails.count)")
+    }
+  }
   func configureDelegates() {
     searchBar.delegate = self
     tableView.delegate = self
@@ -92,7 +97,7 @@ class ListViewController: UIViewController {
     urlRequest.httpMethod = "GET"
     urlRequest.setValue("eb4517d5-865b-4e49-9b2f-96acfa53c0b2", forHTTPHeaderField: "x-api-key")
     
-   URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+    URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
       
       if error != nil {
         self.utility.getError(error: error! as NSError, controller: self)
@@ -116,7 +121,7 @@ class ListViewController: UIViewController {
       } catch {
         print("Decoder error:  \(String(describing: error))")
       }
-   }.resume()
+    }.resume()
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -132,14 +137,14 @@ class ListViewController: UIViewController {
     }
   }
   func cancelTaskWithUrl(_ stringUrl: String) {
-     let url = URL(string: stringUrl)
-     URLSession.shared.getAllTasks { tasks in
-       tasks
-         .filter { $0.state == .running }
-         .filter { $0.originalRequest?.url == url }.first?
-         .cancel()
-     }
-   }
+    let url = URL(string: stringUrl)
+    URLSession.shared.getAllTasks { tasks in
+      tasks
+        .filter { $0.state == .running }
+        .filter { $0.originalRequest?.url == url }.first?
+        .cancel()
+    }
+  }
 }
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
@@ -159,16 +164,15 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     cell.nameLbl.text? = kittyCell.breeds.first!.name
     cell.originLbl.text? = kittyCell.breeds.first!.origin
     
-    DispatchQueue.main.async {
+    
     cell.imgView.downloadImage(urlString: kittyCell.url, completion: { result in
       switch result {
       case .success:
         print("\(String(describing: cell.nameLbl.text)) image was loaded")
       case .failure(let error):
-      self.utility.getError(error: error as NSError, controller: self)
+        self.utility.getError(error: error as NSError, controller: self)
       }
-      })
-    }
+    })
     cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
     cell.imgView.layer.cornerRadius = cell.imgView.frame.height / 2
     
