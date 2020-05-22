@@ -88,6 +88,11 @@ class Utility {
       print("userCancel")
     case -1001:
       alert(controller: controller, message: "The request timed out.")
+    case -1005:
+//      alert(controller: controller, message: "The network connection was lost.")
+      print("The network connection was lost.")
+    case -1009:
+      alert(controller: controller, message: "The Internet connection appears to be offline.")
     default:
       print("EROROROROR")
       alert(controller: controller, message: "Error: \(error)")
