@@ -8,11 +8,15 @@
 
 import UIKit
 
-class RandomImgViewController: UIViewController {
+class RandomImgViewController: UIViewController, UIScrollViewDelegate {
   
   @IBOutlet weak var imgView: CustomImageView!
   
   @IBOutlet weak var refreshButton: UIButton!
+  
+  var scrollView : UIScrollView!
+  
+  var newImageView = UIImageView()
   
   var utility = Utility()
   
@@ -62,18 +66,32 @@ class RandomImgViewController: UIViewController {
     }.resume()
   }
   
+  func setupScrollView() {
+    scrollView=UIScrollView()
+    scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+    scrollView.bounces=false
+    let minScale = scrollView.frame.size.width / newImageView.frame.size.width;
+    scrollView.minimumZoomScale = minScale
+    scrollView.maximumZoomScale = 5.0
+    scrollView.contentSize = newImageView.frame.size
+    scrollView.delegate=self;
+  }
+  
   @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
     navigationItem.title = ""
     self.navigationController?.isNavigationBarHidden = true
-    let newImageView = UIImageView(image: imgView.image)
+    newImageView = UIImageView(image: imgView.image)
     newImageView.frame = UIScreen.main.bounds
     newImageView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
     newImageView.contentMode = .scaleAspectFit
     newImageView.isUserInteractionEnabled = true
     
+    setupScrollView()
+    
+    self.view.addSubview(scrollView)
     let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
-    newImageView.addGestureRecognizer(tap)
-    self.view.addSubview(newImageView)
+    scrollView.addGestureRecognizer(tap)
+    scrollView.addSubview(newImageView)
     
   }
   
@@ -81,4 +99,9 @@ class RandomImgViewController: UIViewController {
     self.navigationController?.isNavigationBarHidden = false
     sender.view?.removeFromSuperview()
   }
+  
+  func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+    return self.newImageView
+  }
+  
 }
