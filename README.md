@@ -13,8 +13,10 @@ The app has 4 different screens:
 4. KittyDetails with the details of a particular breed.
 
 ## Screenshots
-![Screenshot](https://github.com/Falliot/KittyPaw/blob/master/Test%20Task/Screenshots/rsz_1img_9744.png)
-![Screenshot](https://github.com/Falliot/KittyPaw/blob/master/Test%20Task/Screenshots/rsz_mainscreen.png)
+![Screenshot](https://github.com/Falliot/KittyPaw/blob/master/Test%20Task/Screenshots/MainScreen.png)
+![Screenshot](https://github.com/Falliot/KittyPaw/blob/master/Test%20Task/Screenshots/RandomImgScreen.png)
+![Screenshot](https://github.com/Falliot/KittyPaw/blob/master/Test%20Task/Screenshots/KittyListScreen.png)
+![Screenshot](https://github.com/Falliot/KittyPaw/blob/master/Test%20Task/Screenshots/detailsScreen.png)
 
 
 
