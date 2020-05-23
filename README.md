@@ -6,8 +6,8 @@ This is my Test App, that allows the user to get the list and the details of cat
 
 The app has 4 different screens:
 1. Main screen with 2 buttons:
-  a)KittyList
-  b)RandomKitty
+  1.KittyList
+  2.RandomKitty
 2. RandomKitty with UIImageView and button.
 3. KittyList is a UITableView with a list of all cat breeds.
 4. KittyDetails with the details of a particular breed.
