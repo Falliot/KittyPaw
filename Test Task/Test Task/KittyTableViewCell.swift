@@ -14,8 +14,6 @@ class KittyTableViewCell: UITableViewCell {
   
   @IBOutlet weak var cellView: UIView!
   
-  @IBOutlet weak var imgView: CustomImageView!
-  
   @IBOutlet weak var nameLbl: UILabel!
   
   @IBOutlet weak var originLbl: UILabel!
@@ -23,6 +21,14 @@ class KittyTableViewCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
+    guard let nameFont = UIFont(name: "Quicksand-BoldItalic", size: 25) else {
+      fatalError("error")
+    }
+    guard let originFont = UIFont(name: "Quicksand-BoldItalic", size: 20) else {
+      fatalError("error")
+    }
+    nameLbl.font = nameFont
+    originLbl.font = originFont
   }
   
   override func setSelected(_ selected: Bool, animated: Bool) {

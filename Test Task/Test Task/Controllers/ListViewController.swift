@@ -23,17 +23,14 @@ class ListViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    getKittyId()
+    self.navigationController?.isNavigationBarHidden = false
+    
     configureDelegates()
     hideKeyboardOnTap()
     
     // Do any additional setup after loading the view.
-  }
-  
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    getKittyId()
-    self.navigationController?.isNavigationBarHidden = false
   }
   
   //MARK: Cancelling all requests and erasing data when moving back to parent VC
@@ -182,21 +179,11 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     let kittyCell = imageDetails[indexPath.row]
     
-    cell.nameLbl.text? = kittyCell.breeds.first!.name
-    cell.originLbl.text? = kittyCell.breeds.first!.origin
-  
-    
-    cell.imgView.downloadImage(urlString: kittyCell.url, completion: { result in
-      switch result {
-      case .success:
-        print("\(String(describing: cell.nameLbl.text)) image was loaded")
-      case .failure(let error):
-        self.utility.getError(error: error as NSError, controller: self)
-      }
-    })
+    cell.nameLbl.text? = "Name: " + kittyCell.breeds.first!.name
+    cell.originLbl.text? = "From: " + kittyCell.breeds.first!.origin
+
     cell.cellView.layer.cornerRadius = cell.cellView.frame.height / 2
-    cell.imgView.layer.cornerRadius = cell.imgView.frame.height / 2
-    
+  
     return cell
   }
 }

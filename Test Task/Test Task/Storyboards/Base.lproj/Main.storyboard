@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1KN-VE-Oxg">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -16,12 +17,11 @@
             <objects>
                 <navigationController id="1KN-VE-Oxg" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5cZ-Fa-qn3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.20605122477226892" green="0.58584589704465129" blue="0.86219577498847455" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2Dx-fi-dBi">
-                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.2009780192" green="0.75295428580000001" blue="0.91104012729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </toolbar>
@@ -36,28 +36,28 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Test_Task" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="KittyPaw" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="k4C-50-GG2">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                             </imageView>
                             <visualEffectView opaque="NO" alpha="0.75" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="FzC-kz-GQZ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="634"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rTQ-4K-nBr">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="634"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="regular"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4g8-HW-aaG" userLabel="TopView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="235"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="147"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KittyPaw" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Di8-ve-Fbd">
-                                        <rect key="frame" x="154" y="70" width="293" height="96"/>
+                                        <rect key="frame" x="60.5" y="25.5" width="293" height="96"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="80"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -69,10 +69,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0uS-9n-kS8" userLabel="MiddleView">
-                                <rect key="frame" x="0.0" y="235" width="600" height="195"/>
+                                <rect key="frame" x="0.0" y="235" width="414" height="491"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vqi-8G-2ab" userLabel="BottomView">
-                                <rect key="frame" x="127" y="430" width="346" height="140"/>
+                                <rect key="frame" x="34" y="726" width="346" height="140"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="720" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jZL-xb-ZKa" userLabel="KittyList">
                                         <rect key="frame" x="0.0" y="0.0" width="346" height="65"/>
@@ -151,27 +151,27 @@
         <!--Random Img View Controller-->
         <scene sceneID="Yw0-rk-pcd">
             <objects>
-                <viewController id="3te-0A-Jc2" customClass="RandomImgViewController" customModule="Test_Task" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3te-0A-Jc2" customClass="RandomImgViewController" customModule="KittyPaw" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vKo-bF-whq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" semanticContentAttribute="playback" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blue_background1" translatesAutoresizingMaskIntoConstraints="NO" id="6DQ-fq-5Fb">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                             </imageView>
                             <visualEffectView opaque="NO" alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spN-Vo-J5T">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="634"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Odg-90-74A">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="634"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="regular"/>
                             </visualEffectView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vil-wK-Fvb" userLabel="TopView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="389"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="597"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ygV-Px-28d" customClass="CustomImageView" customModule="Test_Task" customModuleProvider="target">
-                                        <rect key="frame" x="113" y="-30" width="375" height="501"/>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ygV-Px-28d" customClass="CustomImageView" customModule="KittyPaw" customModuleProvider="target">
+                                        <rect key="frame" x="19.5" y="73.5" width="375" height="501"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="375" id="Jx2-FP-UrW"/>
@@ -188,7 +188,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ue-Cl-07m" userLabel="BottomView">
-                                <rect key="frame" x="230" y="440" width="140" height="140"/>
+                                <rect key="frame" x="137" y="736" width="140" height="140"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FRU-z7-vhI">
                                         <rect key="frame" x="0.0" y="0.0" width="140" height="140"/>
@@ -250,16 +250,16 @@
         <!--List View Controller-->
         <scene sceneID="dVL-y9-y40">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="zlJ-Ig-8FA" customClass="ListViewController" customModule="Test_Task" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="zlJ-Ig-8FA" customClass="ListViewController" customModule="KittyPaw" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dXu-wU-J56">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W3B-uu-j7B">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="634"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search for a Kitty by Origin" id="vzN-s5-Ajg">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="56"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES"/>
                                     <scopeButtonTitles>
@@ -268,32 +268,25 @@
                                     </scopeButtonTitles>
                                 </searchBar>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="kittyCell" rowHeight="100" id="uhX-Ty-XaS" customClass="KittyTableViewCell" customModule="Test_Task" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="kittyCell" rowHeight="100" id="uhX-Ty-XaS" customClass="KittyTableViewCell" customModule="KittyPaw" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="84" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uhX-Ty-XaS" id="lbe-fk-6oK">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="72S-oT-6RX">
-                                                    <rect key="frame" x="10" y="5" width="355" height="90"/>
+                                                    <rect key="frame" x="10" y="5" width="394" height="90"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nMk-Ar-V6k" customClass="CustomImageView" customModule="Test_Task" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="90" id="JJc-TW-QM6"/>
-                                                                <constraint firstAttribute="width" constant="90" id="W2a-Mu-D6h"/>
-                                                            </constraints>
-                                                        </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yUL-oG-VKM">
-                                                            <rect key="frame" x="110" y="10" width="53" height="23.5"/>
+                                                            <rect key="frame" x="20" y="10" width="53" height="23.5"/>
                                                             <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="20"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Origin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XCn-cM-ZHA">
-                                                            <rect key="frame" x="110" y="50" width="45.5" height="20"/>
-                                                            <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="17"/>
+                                                            <rect key="frame" x="20" y="46.5" width="53.5" height="23.5"/>
+                                                            <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="20"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -301,14 +294,11 @@
                                                     <color key="backgroundColor" red="0.96519881490000003" green="0.53024739030000001" blue="0.22275754810000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yUL-oG-VKM" secondAttribute="trailing" constant="20" symbolic="YES" id="0iS-v2-TOK"/>
-                                                        <constraint firstAttribute="bottom" secondItem="nMk-Ar-V6k" secondAttribute="bottom" id="9Lq-lu-y58"/>
-                                                        <constraint firstItem="yUL-oG-VKM" firstAttribute="leading" secondItem="nMk-Ar-V6k" secondAttribute="trailing" constant="20" id="A5R-S2-Lht"/>
-                                                        <constraint firstItem="nMk-Ar-V6k" firstAttribute="leading" secondItem="72S-oT-6RX" secondAttribute="leading" id="RJT-0R-oKc"/>
+                                                        <constraint firstItem="yUL-oG-VKM" firstAttribute="leading" secondItem="72S-oT-6RX" secondAttribute="leading" constant="20" id="3K4-mG-AYp"/>
+                                                        <constraint firstItem="XCn-cM-ZHA" firstAttribute="leading" secondItem="72S-oT-6RX" secondAttribute="leading" constant="20" id="RTq-6Z-V7I"/>
+                                                        <constraint firstItem="yUL-oG-VKM" firstAttribute="top" secondItem="72S-oT-6RX" secondAttribute="top" constant="10" id="SD9-Ir-aId"/>
                                                         <constraint firstAttribute="bottom" secondItem="XCn-cM-ZHA" secondAttribute="bottom" constant="20" id="bBP-so-5V6"/>
-                                                        <constraint firstItem="nMk-Ar-V6k" firstAttribute="top" secondItem="72S-oT-6RX" secondAttribute="top" id="mCC-y5-vm6"/>
-                                                        <constraint firstItem="XCn-cM-ZHA" firstAttribute="leading" secondItem="nMk-Ar-V6k" secondAttribute="trailing" constant="20" id="n1v-wA-Rk5"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="XCn-cM-ZHA" secondAttribute="trailing" constant="20" symbolic="YES" id="sPe-LJ-tg9"/>
-                                                        <constraint firstItem="yUL-oG-VKM" firstAttribute="top" secondItem="72S-oT-6RX" secondAttribute="top" constant="10" id="wKN-m4-9FB"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -322,7 +312,6 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cellView" destination="72S-oT-6RX" id="Wfn-bi-8VP"/>
-                                            <outlet property="imgView" destination="nMk-Ar-V6k" id="G3B-sN-pL8"/>
                                             <outlet property="nameLbl" destination="yUL-oG-VKM" id="2rE-DZ-Ezh"/>
                                             <outlet property="originLbl" destination="XCn-cM-ZHA" id="ULr-7R-xeA"/>
                                             <segue destination="X6S-dV-iE4" kind="show" identifier="toDetails" id="vNh-mP-Izc"/>
@@ -348,59 +337,59 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MLF-C0-bat" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="900" y="-334"/>
+            <point key="canvasLocation" x="900.00000000000011" y="-334.15178571428572"/>
         </scene>
         <!--Details View Controller-->
         <scene sceneID="csc-Nb-aQG">
             <objects>
-                <viewController id="X6S-dV-iE4" customClass="DetailsViewController" customModule="Test_Task" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="X6S-dV-iE4" customClass="DetailsViewController" customModule="KittyPaw" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kx4-cG-GCB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="iVb-cg-5MB">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="634"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" red="0.19638324870000001" green="0.19543213719999999" blue="0.1931884556" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <visualEffectView opaque="NO" alpha="0.75" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="S5K-Bm-5gQ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6Vl-Qa-peF">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </view>
                                 <blurEffect style="regular"/>
                             </visualEffectView>
                             <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="JFm-8v-Rnt">
-                                <rect key="frame" x="20" y="401" width="560" height="179"/>
+                                <rect key="frame" x="20" y="609" width="374" height="233"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kiB-v7-ZFD">
-                                        <rect key="frame" x="237" y="0.0" width="87" height="42"/>
+                                        <rect key="frame" x="143.5" y="0.0" width="87" height="54"/>
                                         <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="17"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Origin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zLU-ms-uhE">
-                                        <rect key="frame" x="257" y="44" width="46" height="41"/>
+                                        <rect key="frame" x="164.5" y="56" width="45.5" height="54.5"/>
                                         <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="17"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PmI-9o-0I3">
-                                        <rect key="frame" x="254" y="87" width="53" height="42"/>
+                                        <rect key="frame" x="161" y="112.5" width="52.5" height="54"/>
                                         <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="17"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Temperament" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Q8-IU-eA0">
-                                        <rect key="frame" x="228" y="131" width="104" height="48"/>
+                                        <rect key="frame" x="135" y="168.5" width="104" height="64.5"/>
                                         <fontDescription key="fontDescription" name="Quicksand-Bold" family="Quicksand" pointSize="17"/>
                                         <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VMT-n1-es2" customClass="CustomImageView" customModule="Test_Task" customModuleProvider="target">
-                                <rect key="frame" x="10" y="10" width="580" height="371"/>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VMT-n1-es2" customClass="CustomImageView" customModule="KittyPaw" customModuleProvider="target">
+                                <rect key="frame" x="10" y="98" width="394" height="491"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="usL-DE-X2U" appends="YES" id="0eI-nI-JC1"/>
