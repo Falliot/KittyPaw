@@ -8,6 +8,8 @@
 
 import Foundation
 
+//MARK: JSON Structures
+
 struct KittyData : Codable {
   let id: String
 }

@@ -15,6 +15,8 @@ class CustomImageView: UIImageView {
   
   let activityIndicator = UIActivityIndicatorView()
   
+  //MARK: Method for downloading and caching images
+  
   func downloadImage(urlString: String, completion: @escaping(Result<String, Error>) -> Void) {
     
     activityIndicatorSetup()
@@ -22,6 +24,10 @@ class CustomImageView: UIImageView {
     imageUrlString = urlString
     
     guard let url = URL(string: urlString) else { return }
+    
+    var urlRequest = URLRequest(url: url)
+    urlRequest.httpMethod = "GET"
+    urlRequest.setValue("eb4517d5-865b-4e49-9b2f-96acfa53c0b2", forHTTPHeaderField: "x-api-key")
     
     image = nil
     DispatchQueue.main.async {
@@ -58,9 +64,10 @@ class CustomImageView: UIImageView {
         self.activityIndicator.stopAnimating()
       }
     }).resume()
-    
   }
-
+  
+  //MARK: Activity Indicator
+  
   func activityIndicatorSetup() {
     activityIndicator.style = .large
     activityIndicator.color = .darkGray
@@ -71,7 +78,10 @@ class CustomImageView: UIImageView {
   }
 }
 
+
 class Utility {
+  
+  //MARK: Pop up alert
   
   func alert(controller: UIViewController, message: String) {
     DispatchQueue.main.async {
@@ -82,6 +92,8 @@ class Utility {
     }
   }
   
+  //MARK: Errors
+  
   func getError(error: NSError, controller: UIViewController) {
     switch error.code {
     case -999:
@@ -89,7 +101,7 @@ class Utility {
     case -1001:
       alert(controller: controller, message: "The request timed out.")
     case -1005:
-//      alert(controller: controller, message: "The network connection was lost.")
+      //      alert(controller: controller, message: "The network connection was lost.")
       print("The network connection was lost.")
     case -1009:
       alert(controller: controller, message: "The Internet connection appears to be offline.")
@@ -98,5 +110,4 @@ class Utility {
       alert(controller: controller, message: "Error: \(error)")
     }
   }
-  
 }

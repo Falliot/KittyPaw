@@ -35,6 +35,16 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
     
     // Do any additional setup after loading the view.
     
+    setUpKittyDetails()
+    
+    if kittyDetails?.breeds.first?.id == "ebur" {
+      wikiButton.isEnabled = false
+    }
+  }
+  
+  //MARK: Method for setting up kitty data
+  
+  func setUpKittyDetails() {
     title = kittyDetails?.breeds.first?.name
     descriptionLbl.text = kittyDetails?.breeds.first?.description
     originLbl.text = "From: " + (kittyDetails?.breeds.first!.origin)!
@@ -45,8 +55,7 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
     textFixer(textLabel: descriptionLbl)
     textFixer(textLabel: temperamentLbl)
     
-    DispatchQueue.main.async {
-      self.imgView.downloadImage(urlString: self.kittyDetails!.url, completion: { result in
+    self.imgView.downloadImage(urlString: self.kittyDetails!.url, completion: { result in
       switch result {
       case .success:
         print("\(String(describing: self.title)), image was loaded")
@@ -54,12 +63,11 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
         self.utility.getError(error: error as NSError, controller: self)
       }
     })
-    }
-    if kittyDetails?.breeds.first?.id == "ebur" {
-      wikiButton.isEnabled = false
-    }
-    
   }
+  
+  
+  
+  //MARK: Method for fitting a long text
   
   func textFixer(textLabel: UILabel) {
     textLabel.adjustsFontSizeToFitWidth = true
@@ -67,17 +75,20 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
     textLabel.numberOfLines = 0
   }
   
+  //MARK: ScrollView
   
-   func setupScrollView() {
-     scrollView=UIScrollView()
-     scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-     scrollView.bounces=false
-     let minScale = scrollView.frame.size.width / newImageView.frame.size.width;
-     scrollView.minimumZoomScale = minScale
-     scrollView.maximumZoomScale = 5.0
-     scrollView.contentSize = newImageView.frame.size
-     scrollView.delegate=self;
-   }
+  func setupScrollView() {
+    scrollView=UIScrollView()
+    scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+    scrollView.bounces=false
+    let minScale = scrollView.frame.size.width / newImageView.frame.size.width;
+    scrollView.minimumZoomScale = minScale
+    scrollView.maximumZoomScale = 5.0
+    scrollView.contentSize = newImageView.frame.size
+    scrollView.delegate=self;
+  }
+  
+  //MARK: Method that triggers Wikipedia button
   
   @IBAction func wikiButtonIsClicked(_ sender: Any) {
     let url = URL(string: (kittyDetails?.breeds.first!.wikipediaURL)!)
@@ -86,29 +97,34 @@ class DetailsViewController: UIViewController, UIScrollViewDelegate {
     }
   }
   
+  //MARK: Display an image in full size
+  
   @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
-   self.navigationController?.isNavigationBarHidden = true
-      newImageView = UIImageView(image: imgView.image)
-      newImageView.frame = UIScreen.main.bounds
-      newImageView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-      newImageView.contentMode = .scaleAspectFit
-      newImageView.isUserInteractionEnabled = true
-      
-      setupScrollView()
-      
-      self.view.addSubview(scrollView)
-      let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
-      scrollView.addGestureRecognizer(tap)
-      scrollView.addSubview(newImageView)
-      
-    }
+    self.navigationController?.isNavigationBarHidden = true
+    newImageView = UIImageView(image: imgView.image)
+    newImageView.frame = UIScreen.main.bounds
+    newImageView.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+    newImageView.contentMode = .scaleAspectFit
+    newImageView.isUserInteractionEnabled = true
     
-    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
-      self.navigationController?.isNavigationBarHidden = false
-      sender.view?.removeFromSuperview()
-    }
+    setupScrollView()
     
-    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
-      return self.newImageView
-    }
+    self.view.addSubview(scrollView)
+    let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+    scrollView.addGestureRecognizer(tap)
+    scrollView.addSubview(newImageView)
+    
+  }
+  
+  
+  @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+    self.navigationController?.isNavigationBarHidden = false
+    sender.view?.removeFromSuperview()
+  }
+  
+  //MARK: Method that allows zooming in scrollView
+  
+  func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+    return self.newImageView
+  }
 }

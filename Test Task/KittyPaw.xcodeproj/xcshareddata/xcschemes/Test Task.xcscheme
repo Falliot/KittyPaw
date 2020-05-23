@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3A7DF1062461769700148687"
-               BuildableName = "Test Task.app"
-               BlueprintName = "Test Task"
-               ReferencedContainer = "container:Test Task.xcodeproj">
+               BuildableName = "KittyPaw.app"
+               BlueprintName = "KittyPaw"
+               ReferencedContainer = "container:KittyPaw.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3A7DF1062461769700148687"
-            BuildableName = "Test Task.app"
-            BlueprintName = "Test Task"
-            ReferencedContainer = "container:Test Task.xcodeproj">
+            BuildableName = "KittyPaw.app"
+            BlueprintName = "KittyPaw"
+            ReferencedContainer = "container:KittyPaw.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3A7DF1062461769700148687"
-            BuildableName = "Test Task.app"
-            BlueprintName = "Test Task"
-            ReferencedContainer = "container:Test Task.xcodeproj">
+            BuildableName = "KittyPaw.app"
+            BlueprintName = "KittyPaw"
+            ReferencedContainer = "container:KittyPaw.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

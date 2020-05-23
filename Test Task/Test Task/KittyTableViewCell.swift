@@ -8,8 +8,10 @@
 
 import UIKit
 
-class KittyTableViewCell: UITableViewCell {
+//MARK: Custom TableViewCell
 
+class KittyTableViewCell: UITableViewCell {
+  
   @IBOutlet weak var cellView: UIView!
   
   @IBOutlet weak var imgView: CustomImageView!
@@ -19,14 +21,14 @@ class KittyTableViewCell: UITableViewCell {
   @IBOutlet weak var originLbl: UILabel!
   
   override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-
+    super.awakeFromNib()
+    // Initialization code
+  }
+  
+  override func setSelected(_ selected: Bool, animated: Bool) {
+    super.setSelected(selected, animated: animated)
+    
+    // Configure the view for the selected state
+  }
+  
 }

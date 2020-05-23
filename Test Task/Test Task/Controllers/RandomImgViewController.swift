@@ -27,14 +27,20 @@ class RandomImgViewController: UIViewController, UIScrollViewDelegate {
     getImage()
     // Do any additional setup after loading the view.
   }
+  
+  
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     self.navigationController?.isNavigationBarHidden = false
   }
   
+  //MARK: Method for triggering refresh button
+  
   @IBAction func refreshtButtonIsClicked(_ sender: Any) {
     getImage()
   }
+  
+  //MARK: Method for getting a random image
   
   func getImage() {
     guard let resourceURL = URL(string: "https://api.thecatapi.com/v1/images/search") else { fatalError() }
@@ -66,6 +72,8 @@ class RandomImgViewController: UIViewController, UIScrollViewDelegate {
     }.resume()
   }
   
+  //MARK: ScrollView
+  
   func setupScrollView() {
     scrollView=UIScrollView()
     scrollView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
@@ -76,6 +84,8 @@ class RandomImgViewController: UIViewController, UIScrollViewDelegate {
     scrollView.contentSize = newImageView.frame.size
     scrollView.delegate=self;
   }
+  
+  //MARK: Display an image in full size
   
   @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
     navigationItem.title = ""
@@ -95,13 +105,15 @@ class RandomImgViewController: UIViewController, UIScrollViewDelegate {
     
   }
   
+  
   @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
     self.navigationController?.isNavigationBarHidden = false
     sender.view?.removeFromSuperview()
   }
   
+  //MARK: Method that allows zooming in scrollView
+  
   func viewForZooming(in scrollView: UIScrollView) -> UIView? {
     return self.newImageView
   }
-  
 }

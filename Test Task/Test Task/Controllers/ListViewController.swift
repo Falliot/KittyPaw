@@ -25,15 +25,19 @@ class ListViewController: UIViewController {
     super.viewDidLoad()
     configureDelegates()
     hideKeyboardOnTap()
+    
     // Do any additional setup after loading the view.
   }
+  
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     getKittyId()
     self.navigationController?.isNavigationBarHidden = false
-    
   }
+  
+  //MARK: Cancelling all requests and erasing data when moving back to parent VC
+  
   override func didMove(toParent parent: UIViewController?) {
     super.didMove(toParent: parent)
     if parent == nil {
@@ -53,11 +57,16 @@ class ListViewController: UIViewController {
       print("imageDetails.count\(imageDetails.count)")
     }
   }
+  
+  //MARK: Method for delegates
+  
   func configureDelegates() {
     searchBar.delegate = self
     tableView.delegate = self
     tableView.dataSource = self
   }
+  
+  //MARK: Method for getting kitty's id
   
   func getKittyId() {
     guard let resourceURL = URL(string:"https://api.thecatapi.com/v1/breeds") else {fatalError()}
@@ -90,6 +99,8 @@ class ListViewController: UIViewController {
       }
     }.resume()
   }
+  
+  //MARK: Method for getting kitty's data
   
   func getKittyData(kittyId: String) {
     guard let resourceURL = URL(string:"https://api.thecatapi.com/v1/images/search?breed_id=\(kittyId)") else {fatalError()}
@@ -124,6 +135,8 @@ class ListViewController: UIViewController {
     }.resume()
   }
   
+  //MARK: Method for passing data when moving to DetailsVC
+  
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == "toDetails" {
       if let indexPath = tableView.indexPathForSelectedRow {
@@ -136,6 +149,9 @@ class ListViewController: UIViewController {
       }
     }
   }
+  
+  //MARK: Method for cancelling URL tasks
+  
   func cancelTaskWithUrl(_ stringUrl: String) {
     let url = URL(string: stringUrl)
     URLSession.shared.getAllTasks { tasks in
@@ -147,14 +163,19 @@ class ListViewController: UIViewController {
   }
 }
 
+//MARK: Extensions
+
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     imageDetails.count
   }
   
+  
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 100
   }
+  
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "kittyCell", for: indexPath) as! KittyTableViewCell
@@ -163,7 +184,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     cell.nameLbl.text? = kittyCell.breeds.first!.name
     cell.originLbl.text? = kittyCell.breeds.first!.origin
-    
+  
     
     cell.imgView.downloadImage(urlString: kittyCell.url, completion: { result in
       switch result {
@@ -194,10 +215,14 @@ extension ListViewController: UISearchBarDelegate {
     })
     tableView.reloadData()
   }
+  
+  
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     searchBar.resignFirstResponder()
   }
 }
+
+
 extension ListViewController: UITextFieldDelegate {
   
   func hideKeyboardOnTap() {
