@@ -17,6 +17,6 @@ The app has 4 different screens:
 ![Screenshot](https://github.com/Falliot/KittyPaw/blob/master/Test%20Task/Screenshots/RandomImgScreen.png)
 ![Screenshot](https://github.com/Falliot/KittyPaw/blob/master/Test%20Task/Screenshots/KittyListScreen.png)
 ![Screenshot](https://github.com/Falliot/KittyPaw/blob/master/Test%20Task/Screenshots/detailsScreen.png)
-
+![Screenshot](https://github.com/Falliot/KittyPaw/blob/master/Test%20Task/Screenshots/KittyListNew.png)
 
 
