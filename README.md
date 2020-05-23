@@ -14,6 +14,7 @@ The app has 4 different screens:
 
 ## Screenshots
 ![Screenshot](https://github.com/Falliot/KittyPaw/blob/master/Test%20Task/Screenshots/rsz_1img_9744.png)
+![Screenshot](https://github.com/Falliot/KittyPaw/blob/master/Test%20Task/Screenshots/rsz_mainscreen.png)
 
 
 
